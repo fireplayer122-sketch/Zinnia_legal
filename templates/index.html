@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Zinnia • Discord Card Bot{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-orb hero-orb-one"></div>
+    <div class="hero-orb hero-orb-two"></div>
+
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <div class="eyebrow hero-eyebrow">
+                <span>A DISCORD CARD COLLECTING BOT</span>
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-spark">✦</span>
+            </div>
+
+            <h1>
+                Collect
+                <span>magical cards</span>
+                on Discord.
+            </h1>
+
+            <p class="hero-description">
+                Drop characters, grab your favorites, build collections,
+                customize your profile, complete quests, ascend cards,
+                and discover rare Magical copies.
+            </p>
+
+            <div class="hero-buttons">
+                <a class="button button-primary" href="{{ invite_url }}" target="_blank" rel="noopener">
+                    <span class="discord-mark">◉</span>
+                    Invite Zinnia
+                    <span>→</span>
+                </a>
+
+                <a class="button button-secondary" href="{{ url_for('how_to_play') }}">
+                    Learn how to play
+                </a>
+            </div>
+
+            <div class="quick-features">
+                <div><span>✦</span><p>Collect<br>Cards</p></div>
+                <div><span>♟</span><p>Complete<br>Quests</p></div>
+                <div><span>❖</span><p>Customize<br>Your Profile</p></div>
+                <div><span>★</span><p>Find<br>Magicals</p></div>
+            </div>
+        </div>
+
+        <div class="hero-cards" aria-label="Zinnia card showcase">
+            <div class="magic-ring magic-ring-one"></div>
+            <div class="magic-ring magic-ring-two"></div>
+
+            <div class="showcase-card card-left demo-card">
+                <span class="demo-card-star">✦</span>
+                <strong>Hakari</strong>
+                <small>Card preview</small>
+            </div>
+
+            <div class="showcase-card card-center magical-card demo-card">
+                <div class="magical-aura"></div>
+                <span class="demo-card-star">✦</span>
+                <strong>Magical</strong>
+                <small>Zinnia rarity</small>
+            </div>
+
+            <div class="showcase-card card-right demo-card">
+                <span class="demo-card-star">✦</span>
+                <strong>Nagara</strong>
+                <small>Card preview</small>
+            </div>
+
+            <div class="magical-label">
+                <span>✦</span>
+                Magical rarity
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section" id="statistics">
+    <div class="stats-inner">
+        <div class="stats-copy">
+            <div class="eyebrow compact">LIVE BOT STATISTICS</div>
+            <h2>Zinnia<br><span>by the numbers.</span></h2>
+            <p>A growing collection created by the community, one drop at a time.</p>
+        </div>
+
+        <div class="stats-grid">
+            <article class="stat-card">
+                <div class="stat-icon mint">▱</div>
+                <p>Cards Generated</p>
+                <strong data-stat="generated">—</strong>
+            </article>
+
+            <article class="stat-card purple">
+                <div class="stat-icon lavender">♡</div>
+                <p>Cards Grabbed</p>
+                <strong data-stat="grabbed">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon mint">♕</div>
+                <p>Ascended to A6</p>
+                <strong data-stat="a6">—</strong>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="feature-section">
+    <div class="section-heading">
+        <div class="eyebrow compact">WHAT MAKES ZINNIA DIFFERENT</div>
+        <h2>Your cards are more than <span>just a picture.</span></h2>
+    </div>
+
+    <div class="feature-grid">
+        <article class="feature-card">
+            <span class="feature-number">01</span>
+            <h3>Drop & grab</h3>
+            <p>Drop cards into Discord, race to grab your favorites, and build a collection that is uniquely yours.</p>
+        </article>
+
+        <article class="feature-card featured">
+            <span class="feature-number">02</span>
+            <h3>Rarities & ascension</h3>
+            <p>Find Prismatic and Magical copies, level cards, ascend them to A6, and unlock special rewards.</p>
+        </article>
+
+        <article class="feature-card">
+            <span class="feature-number">03</span>
+            <h3>Make it yours</h3>
+            <p>Customize borders, names, profile backgrounds, favorite cards, tags, and your collection style.</p>
+        </article>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-card">
+        <div>
+            <div class="eyebrow compact">READY TO START?</div>
+            <h2>Your next favorite card <span>could be one drop away.</span></h2>
+        </div>
+
+        <a class="button button-primary" href="{{ invite_url }}" target="_blank" rel="noopener">
+            Invite Zinnia
+        </a>
+    </div>
+</section>
+{% endblock %}
