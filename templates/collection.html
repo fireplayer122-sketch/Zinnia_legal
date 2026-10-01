@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Collection • Zinnia{% endblock %}
+
+{% block content %}
+<section class="page-hero small-page-hero">
+    <div>
+        <div class="eyebrow compact">YOUR CARDS</div>
+        <h1>Collection</h1>
+
+        {% if discord_user %}
+            <p>
+                Signed in as <strong>{{ discord_user.username }}</strong>.
+                Your live Zinnia cards appear below.
+            </p>
+        {% else %}
+            <p>
+                Log in with Discord to connect this page to your Zinnia collection.
+            </p>
+
+            <a class="button button-discord" href="{{ url_for('login') }}">
+                Login with Discord
+            </a>
+        {% endif %}
+    </div>
+</section>
+
+{% if discord_user %}
+<section class="collection-section">
+    {% if cards %}
+        <div class="collection-toolbar">
+            <p><strong>{{ cards|length }}</strong> cards loaded</p>
+
+            <input
+                id="collectionSearch"
+                class="collection-search"
+                type="search"
+                placeholder="Search character, series, or ID..."
+            >
+        </div>
+
+        <div class="collection-grid" id="collectionGrid">
+            {% for card in cards %}
+                <article
+                    class="collection-card"
+                    data-search="{{ (card.card_name ~ ' ' ~ card.series ~ ' ' ~ card.card_id)|lower }}"
+                >
+                    <div class="collection-art">
+                        <img
+                            src="{{ url_for('card_art', series=card.series, name=card.card_name) }}"
+                            alt="{{ card.card_name }}"
+                            loading="lazy"
+                            onerror="this.parentElement.classList.add('missing-art'); this.remove();"
+                        >
+
+                        <span class="rarity-badge rarity-{{ card.rarity_tier|lower }}">
+                            {{ card.rarity_tier }}
+                        </span>
+                    </div>
+
+                    <div class="collection-meta">
+                        <strong>{{ card.card_name }}</strong>
+                        <span>{{ card.series }}</span>
+                        <small>
+                            <code>{{ card.card_id }}</code>
+                            • L{{ card.level }}
+                            • A{{ card.ascension }}
+                            {% if card.print_number %}
+                                • P{{ card.print_number }}
+                            {% endif %}
+                        </small>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <span>✦</span>
+            <h2>No cards found yet.</h2>
+            <p>Grab a card in Discord and come back here.</p>
+        </div>
+    {% endif %}
+</section>
+{% endif %}
+{% endblock %}
