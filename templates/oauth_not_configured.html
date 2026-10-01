@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Discord Login Setup • Zinnia{% endblock %}
+
+{% block content %}
+<section class="page-hero small-page-hero">
+    <div>
+        <div class="eyebrow compact">DISCORD OAUTH</div>
+        <h1>Login needs one more setting.</h1>
+        <p>Add the following environment variables on the live host:</p>
+
+        <div class="code-panel">
+            <code>DISCORD_CLIENT_ID</code>
+            <code>FLASK_SECRET_KEY</code>
+            <code>DISCORD_REDIRECT_URI (optional)</code>
+        </div>
+    </div>
+</section>
+{% endblock %}
