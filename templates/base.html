@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#dff7ec">
+    <title>{% block title %}Zinnia{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header class="site-header" id="top">
+    <nav class="nav-shell">
+        <a class="brand" href="{{ url_for('home') }}">
+            <span class="brand-icon">Z</span>
+            <span>Zinnia</span>
+            <span class="brand-spark">✦</span>
+        </a>
+
+        <button
+            class="mobile-nav-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links">
+            <a class="{% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a>
+            <a class="{% if request.endpoint == 'collection_page' %}active{% endif %}" href="{{ url_for('collection_page') }}">Collection</a>
+            <a class="{% if request.endpoint == 'wheel_page' %}active{% endif %}" href="{{ url_for('wheel_page') }}">Wheel</a>
+            <a class="{% if request.endpoint == 'how_to_play' %}active{% endif %}" href="{{ url_for('how_to_play') }}">How to play</a>
+            <a class="{% if request.endpoint in ['legal', 'terms', 'privacy'] %}active{% endif %}" href="{{ url_for('legal') }}">Terms & Privacy</a>
+        </div>
+
+        <div class="nav-actions">
+            {% if discord_user %}
+                <a class="user-chip" href="{{ url_for('collection_page') }}">
+                    {% if discord_user.avatar %}
+                        <img src="{{ discord_user.avatar }}" alt="">
+                    {% else %}
+                        <span class="user-chip-dot"></span>
+                    {% endif %}
+                    <span>{{ discord_user.username }}</span>
+                </a>
+
+                <a class="button button-secondary button-small" href="{{ url_for('logout') }}">
+                    Log out
+                </a>
+            {% else %}
+                <a class="button button-discord button-small" href="{{ url_for('login') }}">
+                    <span class="discord-mark">◉</span>
+                    Login with Discord
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div>
+            <div class="brand footer-brand">
+                <span class="brand-icon">Z</span>
+                <span>Zinnia</span>
+            </div>
+            <p>
+                A Discord card collecting bot made for drops,
+                progression, customization, and showing off your collection.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="{{ url_for('how_to_play') }}">How to play</a>
+            <a href="{{ url_for('terms') }}">Terms of Service</a>
+            <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
