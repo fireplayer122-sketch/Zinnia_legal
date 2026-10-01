@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Wheel • Zinnia{% endblock %}
+
+{% block content %}
+<section class="page-hero wheel-page">
+    <div>
+        <div class="eyebrow compact">ZINNIA WHEEL</div>
+        <h1>Wheel</h1>
+        <p>
+            This is the current web preview for Zinnia's reward wheel.
+            We can wire real reward claiming into the bot next.
+        </p>
+    </div>
+
+    <div class="wheel-shell">
+        <div class="wheel-pointer"></div>
+
+        <div class="wheel" id="zinniaWheel">
+            <span class="wheel-label label-one">Zens</span>
+            <span class="wheel-label label-two">Ashes</span>
+            <span class="wheel-label label-three">XP</span>
+            <span class="wheel-label label-four">Dandelion</span>
+            <span class="wheel-label label-five">Grab</span>
+            <span class="wheel-label label-six">Drop</span>
+        </div>
+
+        <button type="button" class="button button-primary wheel-button" id="spinWheelButton">
+            Spin preview
+        </button>
+
+        <p class="wheel-result" id="wheelResult"></p>
+    </div>
+</section>
+{% endblock %}
