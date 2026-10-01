@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+database.db
+database.db-shm
+database.db-wal
+cards/
+*.log
+.DS_Store
